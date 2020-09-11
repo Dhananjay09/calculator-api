@@ -48,7 +48,7 @@ app.post("/sub", (req, res)=>{
     }
     num1=parseFloat(num1)
     num2=parseFloat(num2)
-    if(num1 < parseFloat( 1000000) || num2 < parseFloat(1000000) ){
+    if(num1 > parseFloat(1000000) || num2 > parseFloat(1000000) ){
         return res.json({
             message: "Underflow"
         })
