@@ -17,7 +17,7 @@ app.get("/",(req, res)=>{
     return res.json("Hello World!")
 })
 app.post("/add", (req, res)=>{
-    const {num1, num2}=req.body;
+    let {num1, num2}=req.body;
     if(typeof (num1)=="string" || typeof (num2)=="string"){
         return res.json({
             message: "invalid data types"
@@ -29,15 +29,16 @@ app.post("/add", (req, res)=>{
 
         })
     }
+    
     return res.json({
         status: "success/failure/error",
-        message: "the sum of given two number",
-        sum: num1+num2
+        message: "the sum of given two numbers",
+        sum: parseFloat(num1+num2)
     })
 })
 app.post("/sub", (req, res)=>{
     const {num1, num2}=req.body;
-    if(typeof (num1)=="string" || typeof (num2)=="string"){
+    if(typeof (num1)=="string" || typeof (num2)==="string"){
         return res.json({
             message: "invalid data types"
         })
@@ -50,13 +51,13 @@ app.post("/sub", (req, res)=>{
     }
     return res.json({
         status: "success/failure/error",
-        message: "the difference of given two number",
-        sum: num1-num2
+        message: "the difference of given two numbers",
+        sum: parseFloat(num1+num2)
     })
 })
 app.post("/multiply", (req, res)=>{
     const {num1, num2}=req.body;
-    if(typeof (num1)=="string" || typeof (num2)=="string"){
+    if(typeof (num1)==="string" || typeof (num2)==="string"){
         return res.json({
             message: "invalid data types"
         })
@@ -70,12 +71,12 @@ app.post("/multiply", (req, res)=>{
     return res.json({
         status: "success/failure/error",
         message: "The product of given numbers",
-        sum: num1*num2
+        sum: parseFloat(num1*num2)
     })
 })
 app.post("/division", (req, res)=>{
     const {num1, num2}=req.body;
-    if(num2==0){
+    if(num2===0){
         return res.json({
             message: "Cannot divide by zero" 
         })
@@ -84,7 +85,7 @@ app.post("/division", (req, res)=>{
     return res.json({
         status: "success/failure/error",
         message: "the sum of given two number",
-        sum: num1+num2
+        sum: parseFloat(num1/num2)
     })
 })
 // here
