@@ -48,6 +48,11 @@ app.post("/sub", (req, res)=>{
     num1=parseFloat(num1)
     num2=parseFloat(num2)
     let s=num1-num2;
+    if(s < parseFloat(1000000)){
+        return res.json({
+            message: "Underflow"
+        })
+    }
     return res.json({
         status: "success/failure/error",
         message: "the difference of given two numbers",
