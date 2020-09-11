@@ -45,7 +45,7 @@ app.post("/sub", (req, res)=>{
         })
     }
     const sum=parseFloat(num1)-parseFloat(num2);
-    if(num1 >1000000 || num2 > 1000000){
+    if(num1 <1000000 || num2 < 1000000){
         return res.json({
             message: "Underflow"
         })
@@ -53,7 +53,7 @@ app.post("/sub", (req, res)=>{
     return res.json({
         status: "success/failure/error",
         message: "the difference of given two numbers",
-        sum: parseFloat(num1)- parseFloat(num2)
+        sum: sum
     })
 })
 app.post("/multiply", (req, res)=>{
