@@ -52,17 +52,18 @@ app.post("/sub", (req, res)=>{
     return res.json({
         status: "success/failure/error",
         message: "the difference of given two numbers",
-        sum: parseFloat(num1)-  parseFloat(num2)
+        sum: parseFloat(num1)- parseFloat(num2)
     })
 })
 app.post("/multiply", (req, res)=>{
     const {num1, num2}=req.body;
     if(typeof (num1)==="string" || typeof (num2)==="string"){
         return res.json({
-            message: "invalid data types"
+            message: "Invalid data types"
         })
     }
-    if(num1 >1000000 || num2 > 1000000){
+    const sum=parseFloat(num1)*parseFloat(num2);
+    if(num1 >1000000 || num2 > 1000000 || sum > 1000000){
         return res.json({
             message: "Overflow"
 
@@ -71,7 +72,7 @@ app.post("/multiply", (req, res)=>{
     return res.json({
         status: "success/failure/error",
         message: "The product of given numbers",
-        sum: parseFloat(num1)*parseFloat(num2)
+        sum: sum
     })
 })
 app.post("/division", (req, res)=>{
