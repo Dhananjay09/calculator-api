@@ -39,17 +39,13 @@ app.post("/add", (req, res)=>{
 })
 app.post("/sub", (req, res)=>{
     const {num1, num2}=req.body;
-    if(typeof (num1)=="string" || typeof (num2)==="string"){
+    if(typeof (num1)==="string" || typeof (num2)==="string"){
         return res.json({
             message: "Invalid data types"
         })
     }
     
-    if(num1 <1000000 || num2 < 1000000 ){
-        return res.json({
-            message: "Underflow"
-        })
-    }
+    
     const sum=parseFloat(num1)-parseFloat(num2);
     return res.json({
         status: "success/failure/error",
