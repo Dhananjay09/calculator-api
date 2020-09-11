@@ -23,7 +23,8 @@ app.post("/add", (req, res)=>{
             message: "invalid data types"
         })
     }
-    if(num1 >1000000 || num2 > 1000000){
+    let sum=parseFloat(num1)+parseFloat(num2)
+    if(num1 >1000000 || num2 > 1000000 || sum > 1000000){
         return res.json({
             message: "Overflow"
 
@@ -43,10 +44,10 @@ app.post("/sub", (req, res)=>{
             message: "invalid data types"
         })
     }
-    if(num1 >1000000 || num2 > 1000000){
+    const sum=parseFloat(num1)-parseFloat(num2);
+    if(num1 >1000000 || num2 > 1000000 || sum > 1000000   ){
         return res.json({
             message: "Underflow"
-
         })
     }
     return res.json({
