@@ -33,7 +33,7 @@ app.post("/add", (req, res)=>{
     return res.json({
         status: "success/failure/error",
         message: "the sum of given two numbers",
-        sum: parseFloat(num1+num2)
+        sum: parseFloat(num1)+parseFloat(num2)
     })
 })
 app.post("/sub", (req, res)=>{
@@ -52,7 +52,7 @@ app.post("/sub", (req, res)=>{
     return res.json({
         status: "success/failure/error",
         message: "the difference of given two numbers",
-        sum: parseFloat(num1+num2)
+        sum: parseFloat(num1)-  parseFloat(num2)
     })
 })
 app.post("/multiply", (req, res)=>{
@@ -71,7 +71,7 @@ app.post("/multiply", (req, res)=>{
     return res.json({
         status: "success/failure/error",
         message: "The product of given numbers",
-        sum: parseFloat(num1*num2)
+        sum: parseFloat(num1)*parseFloat(num2)
     })
 })
 app.post("/division", (req, res)=>{
@@ -80,12 +80,11 @@ app.post("/division", (req, res)=>{
         return res.json({
             message: "Cannot divide by zero" 
         })
-    }
-    
+    }    
     return res.json({
         status: "success/failure/error",
         message: "the sum of given two number",
-        sum: parseFloat(num1/num2)
+        sum: parseFloat(num1)/parseFloat(num2)
     })
 })
 // here
