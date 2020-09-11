@@ -84,14 +84,7 @@ app.post("/multiply", (req, res)=>{
 })
 app.post("/division", (req, res)=>{
     let {num1,num2}=req.body;
-    if(typeof(num1)=="string" || typeof(num2)=="string"){
-        return res.json({
-            message: "Invalid data types"
-        })
-    }
-    num1=parseFloat(num1)
-    num2=parseFloat(num2)
-    if( num2 === parseFloat(0) ){
+    if( num2 === 0 ){
         return res.json({
             message: "Cannot divide by zero"
         })
