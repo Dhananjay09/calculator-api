@@ -18,22 +18,23 @@ app.get("/",(req, res)=>{
 })
 app.post("/add", (req, res)=>{
     let {num1,num2}=req.body;
-    if(typeof(num1)==="string" || typeof(num2)==="string"){
+    if(typeof(num1)=="string" || typeof(num2)=="string"){
         return res.json({
-            message: "invalid data types"
+            message: "Invalid data types"
         })
     }
     num1=parseFloat(num1)
     num2=parseFloat(num2)
-    if(num1 > parseFloat(1000000) || num2 > parseFloat(1000000)){
+    let s=num1+num2;
+    if(num1 > parseFloat(1000000) || num2 > parseFloat(1000000) || s > parseFloat(1000000)){
         return res.json({
             message: "Overflow"
         })
     }
     return res.json({
         status: "success/failure/error",
-        message: "the sum of given two number",
-        sum: num1+num2
+        message: "the sum of given two numbers",
+        sum: s
     })
 
 })
