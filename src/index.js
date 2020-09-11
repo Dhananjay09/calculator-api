@@ -23,8 +23,10 @@ app.post("/add", (req, res)=>{
             message: "Invalid data types"
         })
     }
+    num1=parseFloat(num1)
+    num2=parseFloat(num2)
     let sum=parseFloat(num1)+parseFloat(num2)
-    if(num1 >1000000 || num2 > 1000000 || sum > 1000000){
+    if(num1 >parseFloat(1000000) || num2 > parseFloat(1000000) || sum > parseFloat(1000000)){
         return res.json({
             message: "Overflow"
 
@@ -38,14 +40,19 @@ app.post("/add", (req, res)=>{
     })
 })
 app.post("/sub", (req, res)=>{
-    const {num1, num2}=req.body;
-    if(typeof (num1)==="string" || typeof (num2)==="string"){
+    let {num1, num2}=req.body;
+    if(typeof (num1)=="string" || typeof (num2)==="string"){
         return res.json({
             message: "Invalid data types"
         })
     }
-    
-    
+    num1=parseFloat(num1)
+    num2=parseFloat(num2)
+    if(num1 < parseFloat( 1000000) || num2 < parseFloat(1000000) ){
+        return res.json({
+            message: "Underflow"
+        })
+    }
     const sum=parseFloat(num1)-parseFloat(num2);
     return res.json({
         status: "success/failure/error",
@@ -60,8 +67,10 @@ app.post("/multiply", (req, res)=>{
             message: "Invalid data types"
         })
     }
+    num1=parseFloat(num1)
+    num2=parseFloat(num2)
     const sum=parseFloat(num1)*parseFloat(num2);
-    if(num1 >1000000 || num2 > 1000000 || sum > 1000000){
+    if(num1 >parseFloat(1000000) || num2 > parseFloat(1000000) || sum > parseFloat(1000000)){
         return res.json({
             message: "Overflow"
 
@@ -75,11 +84,13 @@ app.post("/multiply", (req, res)=>{
 })
 app.post("/division", (req, res)=>{
     const {num1, num2}=req.body;
-    if(num2===0){
+    if(num2===parseFloat(0)){
         return res.json({
             message: "Cannot divide by zero" 
         })
     }
+    num1=parseFloat(num1)
+    num2=parseFloat(num2)
     return res.json({
         status: "success/failure/error",
         message: "the sum of given two number",
